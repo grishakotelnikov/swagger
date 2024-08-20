@@ -15,7 +15,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/api/address/geocode": {
+        "/address/geocode": {
             "post": {
                 "description": "Retrieves an address based on latitude and longitude",
                 "consumes": [
@@ -58,7 +58,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/address/search": {
+        "/address/search": {
             "post": {
                 "description": "Search addresses by query string",
                 "consumes": [
@@ -171,10 +171,10 @@ const docTemplate = `{
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
 	Host:             "localhost:8080",
-	BasePath:         "/",
+	BasePath:         "/api",
 	Schemes:          []string{},
 	Title:            "Address and Geocode API",
-	Description:      "This is a sample geo server .",
+	Description:      "This is a sample geo server.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 	LeftDelim:        "{{",
