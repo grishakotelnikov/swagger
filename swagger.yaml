@@ -1,4 +1,105 @@
+basePath: /
+definitions:
+  main.Address:
+    properties:
+      city:
+        type: string
+      house:
+        type: string
+      lat:
+        type: string
+      lon:
+        type: string
+      street:
+        type: string
+    type: object
+  main.GeocodeRequest:
+    properties:
+      lat:
+        type: string
+      lng:
+        type: string
+    type: object
+  main.GeocodeResponse:
+    properties:
+      addresses:
+        items:
+          $ref: '#/definitions/main.Address'
+        type: array
+    type: object
+  main.ResponseAddress:
+    properties:
+      addresses:
+        items:
+          $ref: '#/definitions/main.Address'
+        type: array
+    type: object
+  main.SearchRequest:
+    properties:
+      query:
+        type: string
+    type: object
+host: localhost:8080
 info:
   contact: {}
-paths: {}
+  description: This is a sample geo server .
+  title: Address and Geocode API
+  version: "1.0"
+paths:
+  /address/geocode:
+    post:
+      consumes:
+      - application/json
+      description: Retrieves an address based on latitude and longitude
+      parameters:
+      - description: Coordinates
+        in: body
+        name: coords
+        required: true
+        schema:
+          $ref: '#/definitions/main.GeocodeRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.GeocodeResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "404":
+          description: No addresses found
+          schema:
+            type: string
+      summary: Geocode address
+  /address/search:
+    post:
+      consumes:
+      - application/json
+      description: Search addresses by query string
+      parameters:
+      - description: Search Query
+        in: body
+        name: query
+        required: true
+        schema:
+          $ref: '#/definitions/main.SearchRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.ResponseAddress'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "404":
+          description: No addresses found
+          schema:
+            type: string
+      summary: Search for addresses
 swagger: "2.0"
