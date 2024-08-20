@@ -15,7 +15,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/address/geocode": {
+        "/api/address/geocode": {
             "post": {
                 "description": "Retrieves an address based on latitude and longitude",
                 "consumes": [
@@ -58,7 +58,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/address/search": {
+        "/api/address/search": {
             "post": {
                 "description": "Search addresses by query string",
                 "consumes": [

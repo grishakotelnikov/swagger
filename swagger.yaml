@@ -46,7 +46,7 @@ info:
   title: Address and Geocode API
   version: "1.0"
 paths:
-  /address/geocode:
+  /api/address/geocode:
     post:
       consumes:
       - application/json
@@ -74,7 +74,7 @@ paths:
           schema:
             type: string
       summary: Geocode address
-  /address/search:
+  /api/address/search:
     post:
       consumes:
       - application/json
