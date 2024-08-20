@@ -20,20 +20,6 @@ definitions:
       lng:
         type: string
     type: object
-  main.GeocodeResponse:
-    properties:
-      addresses:
-        items:
-          $ref: '#/definitions/main.Address'
-        type: array
-    type: object
-  main.ResponseAddress:
-    properties:
-      addresses:
-        items:
-          $ref: '#/definitions/main.Address'
-        type: array
-    type: object
   main.SearchRequest:
     properties:
       query:
@@ -62,9 +48,9 @@ paths:
       - application/json
       responses:
         "200":
-          description: OK
+          description: Geocoded address"     // Changed to return a single address
           schema:
-            $ref: '#/definitions/main.GeocodeResponse'
+            $ref: '#/definitions/main.Address'
         "400":
           description: Invalid input
           schema:
@@ -90,9 +76,9 @@ paths:
       - application/json
       responses:
         "200":
-          description: OK
+          description: Found address
           schema:
-            $ref: '#/definitions/main.ResponseAddress'
+            $ref: '#/definitions/main.Address'
         "400":
           description: Invalid input
           schema:

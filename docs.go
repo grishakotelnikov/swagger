@@ -38,9 +38,9 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "Geocoded address\"     // Changed to return a single address",
                         "schema": {
-                            "$ref": "#/definitions/main.GeocodeResponse"
+                            "$ref": "#/definitions/main.Address"
                         }
                     },
                     "400": {
@@ -81,9 +81,9 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "Found address",
                         "schema": {
-                            "$ref": "#/definitions/main.ResponseAddress"
+                            "$ref": "#/definitions/main.Address"
                         }
                     },
                     "400": {
@@ -131,28 +131,6 @@ const docTemplate = `{
                 },
                 "lng": {
                     "type": "string"
-                }
-            }
-        },
-        "main.GeocodeResponse": {
-            "type": "object",
-            "properties": {
-                "addresses": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/main.Address"
-                    }
-                }
-            }
-        },
-        "main.ResponseAddress": {
-            "type": "object",
-            "properties": {
-                "addresses": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/main.Address"
-                    }
                 }
             }
         },
